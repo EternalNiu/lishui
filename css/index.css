@@ -1,15 +1,6 @@
-.container {
-  position: relative;
-  font-size: 12px;
-  width: 100vw;
-  height: 100vh;
-  font-size: 0.12rem;
-  background: url(../images/one.jpg) no-repeat 50% 50% / 100% 100%;
-  background-size: cover;
-}
 .insert {
   position: absolute;
-  top: 60%;
+  top: 55%;
   width: 5.4rem;
   margin-left: 1.2rem;
   height: 1rem;
