@@ -7,7 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
         <link rel="stylesheet" href="css/base.css">
         <link rel="stylesheet" href="./css/index.css">
-        <style> 
+        <style>
+            .all {
+                width: 100vw;
+                height: 100vh;
+            }
             .ending_box{
                 position: absolute;
                 top:0;
@@ -133,7 +137,7 @@
     });
     let Height = $('body').height();
     $(window).resize(function() {
-        $('body').height('100vh');
+        $('body').height(Height);
     });
     function delComment(name, seat) {
         var a = document.createElement('a');
