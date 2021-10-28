@@ -151,7 +151,7 @@
     });
     let Height = $('body').height();
     $(window).resize(function() {
-        $('.ending_box').height(Height);
+        $('.ending_box, img, .ending_con, .ending_img').height(Height);
     });
     function delComment(name, seat) {
         var a = document.createElement('a');
