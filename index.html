@@ -59,44 +59,60 @@
 <script type="text/javascript" src="./data.js"></script>
 <script type="text/javascript" src="./js/toast.js"></script>
 <script>
-	(function(win, designW) {
-            var doc = win.document;
-            var docEle = doc.documentElement;
-            designW = designW || 640; //设计稿宽度px,默认640px设计稿
-            var ratio = designW / 100;//640px=> 1rem = 100px, 超出640px font-size：100px;
-            var or = "orientationchange" in win ? "orientationchange" : "resize";
-            //创建viewport
-            _createViewport();
-            if(doc.addEventListener){
-                win.addEventListener(or, _refreshRem, false);
-                doc.addEventListener("DOMContentLoaded", _refreshRem, false);
-            }
-            /**
-             * 创建viewport
-             */
-            function _createViewport(){
-                var metaEl = doc.createElement('meta');
-                metaEl.setAttribute('name', 'viewport');
-                metaEl.setAttribute('content', 'initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no');
-                if (docEle.firstElementChild) {
-                    docEle.firstElementChild.appendChild(metaEl);
-                }
+	// (function(win, designW) {
+    //         var doc = win.document;
+    //         var docEle = doc.documentElement;
+    //         designW = designW || 640; //设计稿宽度px,默认640px设计稿
+    //         var ratio = designW / 100;//640px=> 1rem = 100px, 超出640px font-size：100px;
+    //         var or = "orientationchange" in win ? "orientationchange" : "resize";
+    //         //创建viewport
+    //         _createViewport();
+    //         if(doc.addEventListener){
+    //             win.addEventListener(or, _refreshRem, false);
+    //             doc.addEventListener("DOMContentLoaded", _refreshRem, false);
+    //         }
+    //         /**
+    //          * 创建viewport
+    //          */
+    //         function _createViewport(){
+    //             var metaEl = doc.createElement('meta');
+    //             metaEl.setAttribute('name', 'viewport');
+    //             metaEl.setAttribute('content', 'initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no');
+    //             if (docEle.firstElementChild) {
+    //                 docEle.firstElementChild.appendChild(metaEl);
+    //             }
 
-            }
-            /**
-             * 动态更新rem
-             */
-            function _refreshRem() {
-                var clientW = docEle.clientWidth || 320;
-                //设置最大和最小宽度取值
-                if(clientW > designW){
-                    clientW = designW
-                } else if(clientW<320){
-                    clientW=320;
-                }
-                docEle.style.fontSize = clientW / ratio + "px";
-            };
-        })(window, 750);//750为设计稿宽度px值,根据实际设计稿大小对应设置
+    //         }
+    //         /**
+    //          * 动态更新rem
+    //          */
+    //         function _refreshRem() {
+    //             var clientW = docEle.clientWidth || 320;
+    //             //设置最大和最小宽度取值
+    //             if(clientW > designW){
+    //                 clientW = designW
+    //             } else if(clientW<320){
+    //                 clientW=320;
+    //             }
+    //             docEle.style.fontSize = clientW / ratio + "px";
+    //         };
+    //     })(window, 750);//750为设计稿宽度px值,根据实际设计稿大小对应设置
+    (function(doc,win){
+      var docEl = doc.documentElement,
+              resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+              recalc = function() {
+                  var clientWidth = docEl.clientWidth;
+                  if(!clientWidth) return;
+                  if (clientWidth >= 750) {
+                      docEl.style.fontSize = '100px';
+                  } else{
+                      docEl.style.fontSize = 100 *(clientWidth / 750) + 'px';
+                  }
+              };
+      if(!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded',recalc,false);
+  })(document,window)
 </script>
 <script>
     $(document).ready(function(){
@@ -135,7 +151,7 @@
     });
     let Height = $('body').height();
     $(window).resize(function() {
-        $('body').height(Height);
+        $('.ending_box').height(Height);
     });
     function delComment(name, seat) {
         var a = document.createElement('a');
