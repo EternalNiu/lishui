@@ -97,8 +97,9 @@
                     var tableContent = " ";
                     $.each(list,function(i){
                         var ele = list[i];
+                        var useName = ele.name.split('(')[0]
                         tableContent += '<p style="border-bottom: 1px solid #eee; word-wrap:break-word;word-break:break-all; line-height: .8rem; color: #1E90ff">';
-                        tableContent += '<a style="font-size: 14px; width: 100%; display: inline-block" href="detail.html?name='+ele.name+'&seat='+ele.seat+'")>'+ele.name+'</a>'
+                        tableContent += '<a style="font-size: 14px; width: 100%; display: inline-block" href="detail.html?name='+useName+'&seat='+ele.seat+'")>'+ele.name+'</a>'
                         tableContent += '</p>'; 
                     })
                     $('.modal').css('display','block');
