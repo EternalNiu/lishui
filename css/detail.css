@@ -8,7 +8,7 @@
 }
 .name {
   position: absolute;
-  top: 4.2rem;
+  top: 4.6rem;
   padding-left: .4rem;
   line-height: .5rem;
   color: white;
@@ -19,12 +19,12 @@
   width: 100%;
   color: #fff;
   position: absolute;
-  top: 5.4rem;
+  top: 5.9rem;
 }
 .seatTitle {
   padding-left: .8rem;
   line-height: .4rem;
-  margin-bottom: .4rem;
+  margin-bottom: .6rem;
   font-size: 16px;
 }
 .seatname {
